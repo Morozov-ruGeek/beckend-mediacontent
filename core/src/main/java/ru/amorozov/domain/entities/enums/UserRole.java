@@ -1,4 +1,4 @@
-package ru.amorozov.domain.entities;
+package ru.amorozov.domain.entities.enums;
 
 import lombok.Getter;
 import lombok.NonNull;

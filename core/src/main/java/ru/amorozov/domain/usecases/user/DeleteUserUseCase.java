@@ -20,11 +20,11 @@ public class DeleteUserUseCase implements UseCase<String, Void> {
     }
 
     @Override
-    public @NonNull Either<Failure, Void> execute(@NonNull String param) {
-        if(!userRepository.isExistByEmail(param)){
+    public Either<Failure, Void> execute(@NonNull String email) {
+        if(!userRepository.isExistByEmail(email)){
             return Either.left(new CoreFailures.NotFound());
         }
-        userRepository.delete(param);
+        userRepository.delete(email);
         return Either.right(null);
     }
 }

@@ -21,11 +21,11 @@ public class CreateUserUseCase implements UseCase<User, User> {
     }
 
     @Override
-    public @NonNull Either<Failure, User> execute(@NonNull User param) {
-        final var emailIsExist = userRepository.isExistByEmail(param.email());
+    public @NonNull Either<Failure, User> execute(@NonNull User user) {
+        final var emailIsExist = userRepository.isExistByEmail(user.email());
         if (emailIsExist) {
             return Either.left(new CoreFailures.EmailAlreadyExist());
         }
-        return Either.right(userRepository.create(param));
+        return Either.right(userRepository.create(user));
     }
 }

@@ -21,8 +21,8 @@ public class GetByEmailUseCase implements UseCase<String, User> {
     }
 
     @Override
-    public @NonNull Either<Failure, User> execute(@NonNull String param) {
-        final var result = userRepository.getByEmail(param);
+    public Either<Failure, User> execute(@NonNull String email) {
+        final var result = userRepository.getByEmail(email);
         if(result.isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }

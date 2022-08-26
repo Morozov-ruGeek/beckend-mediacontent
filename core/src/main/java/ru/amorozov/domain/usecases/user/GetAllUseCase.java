@@ -22,7 +22,7 @@ public class GetAllUseCase implements UseCase<Void, Collection<User>> {
     }
 
     @Override
-    public @NonNull Either<Failure, Collection<User>> execute(Void param) {
+    public Either<Failure, Collection<User>> execute(Void ignore) {
         return Either.right(userRepository.getAll());
     }
 }

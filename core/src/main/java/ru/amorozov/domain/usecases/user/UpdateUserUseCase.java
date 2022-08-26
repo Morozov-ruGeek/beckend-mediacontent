@@ -21,11 +21,11 @@ public class UpdateUserUseCase implements UseCase<User, User> {
     }
 
     @Override
-    public @NonNull Either<Failure, User> execute(@NonNull User param) {
-        if(!userRepository.isExistByEmail(param.email())){
+    public Either<Failure, User> execute(@NonNull User user) {
+        if(!userRepository.isExistByEmail(user.email())){
             return Either.left(new CoreFailures.NotFound());
         }
-        return Either.right(userRepository.update(param));
+        return Either.right(userRepository.update(user));
     }
 
 }
