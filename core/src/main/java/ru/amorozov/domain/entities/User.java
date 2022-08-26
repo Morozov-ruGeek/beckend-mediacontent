@@ -3,7 +3,7 @@ package ru.amorozov.domain.entities;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.NonNull;
-import ru.amorozov.domain.entities.enums.UserRole;
+import ru.amorozov.domain.entities.enums.Role;
 
 /**
  * @author Aleksey Morozov
@@ -14,5 +14,5 @@ public record User(@GeneratedValue(strategy = GenerationType.UUID, generator = "
                    @NonNull String email,
                    @NonNull String password,
                    @NonNull String avatar,
-                   @NonNull UserRole userRole) implements BasicEntity {
+                   @NonNull Role role) implements BasicEntity {
 }

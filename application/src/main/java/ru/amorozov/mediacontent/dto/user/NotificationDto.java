@@ -1,0 +1,26 @@
+package ru.amorozov.mediacontent.dto.user;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import ru.amorozov.domain.entities.enums.NotificationType;
+import ru.amorozov.mediacontent.dto.task.TaskBasicDto;
+
+import java.time.LocalDateTime;
+
+/**
+ * @author Aleksey Morozov
+ * @since 26.08.2022
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class NotificationDto {
+    private int id;
+    private NotificationType type;
+    private LocalDateTime date;
+    private String message;
+    private UserShortRequestDto user;
+    private TaskBasicDto task;
+
+}

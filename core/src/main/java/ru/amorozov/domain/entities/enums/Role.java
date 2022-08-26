@@ -7,7 +7,7 @@ import lombok.NonNull;
  * @author Aleksey Morozov
  * @since 24.08.2022
  */
-public enum UserRole {
+public enum Role {
 
     ADMIN(1, "Администратор"),
 
@@ -19,7 +19,7 @@ public enum UserRole {
 
     private final @Getter String name;
 
-    UserRole(int id, @NonNull String name) {
+    Role(int id, @NonNull String name) {
         this.id = id;
         this.name = name;
     }
