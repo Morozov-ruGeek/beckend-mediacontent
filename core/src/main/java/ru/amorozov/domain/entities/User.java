@@ -9,7 +9,7 @@ import ru.amorozov.domain.entities.enums.Role;
  * @author Aleksey Morozov
  * @since 24.08.2022
  */
-public record User(@GeneratedValue(strategy = GenerationType.UUID, generator = "uuid") String id,
+public record User(@GeneratedValue(strategy = GenerationType.IDENTITY) Long id,
                    @NonNull String name,
                    @NonNull String email,
                    @NonNull String password,

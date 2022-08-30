@@ -9,18 +9,15 @@ import lombok.NonNull;
  */
 public enum Role {
 
-    ADMIN(1, "Администратор"),
+    ADMIN("Администратор"),
 
-    MANAGER(2, "Менеджер"),
+    MANAGER("Менеджер"),
 
-    CONTENT_MAKER(3, "Контент-мейкер");
-
-    private final @Getter int id;
+    CONTENT_MAKER("Контент-мейкер");
 
     private final @Getter String name;
 
-    Role(int id, @NonNull String name) {
-        this.id = id;
+    Role(@NonNull String name) {
         this.name = name;
     }
 }

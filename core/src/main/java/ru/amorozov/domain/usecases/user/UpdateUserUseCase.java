@@ -22,7 +22,7 @@ public class UpdateUserUseCase implements UseCase<User, User> {
 
     @Override
     public Either<Failure, User> execute(@NonNull User user) {
-        if(!userRepository.isExistByEmail(user.email())){
+        if(userRepository.getByEmail(user.email()).isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }
         return Either.right(userRepository.update(user));

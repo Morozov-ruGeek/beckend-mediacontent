@@ -22,8 +22,8 @@ public class CreateUserUseCase implements UseCase<User, User> {
 
     @Override
     public @NonNull Either<Failure, User> execute(@NonNull User user) {
-        final var emailIsExist = userRepository.isExistByEmail(user.email());
-        if (emailIsExist) {
+        final var result = userRepository.getByEmail(user.email());
+        if (result.isEmpty()) {
             return Either.left(new CoreFailures.EmailAlreadyExist());
         }
         return Either.right(userRepository.create(user));

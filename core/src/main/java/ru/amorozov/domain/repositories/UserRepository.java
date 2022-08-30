@@ -20,6 +20,6 @@ public interface UserRepository {
 
     Collection<User> getAll();
 
-    boolean isExistByEmail(String email);
+    Optional<User> getById(Long id);
 
 }
