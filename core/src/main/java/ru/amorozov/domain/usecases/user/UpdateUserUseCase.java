@@ -5,7 +5,7 @@ import lombok.NonNull;
 import ru.amorozov.domain.entities.User;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.UserRepository;
+import ru.amorozov.domain.repositories.UserRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -14,18 +14,18 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class UpdateUserUseCase implements UseCase<User, User> {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryService userRepositoryService;
 
-    public UpdateUserUseCase(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UpdateUserUseCase(UserRepositoryService userRepositoryService) {
+        this.userRepositoryService = userRepositoryService;
     }
 
     @Override
     public Either<Failure, User> execute(@NonNull User user) {
-        if(userRepository.getByEmail(user.email()).isEmpty()){
+        if(userRepositoryService.getByEmail(user.email()).isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }
-        return Either.right(userRepository.update(user));
+        return Either.right(userRepositoryService.update(user));
     }
 
 }

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public record Comment(@GeneratedValue(strategy = GenerationType.IDENTITY) int id,
+public record Comment(Long id,
                       @NonNull LocalDateTime date,
                       @NonNull User user,
                       @NonNull String message) implements BasicEntity {

@@ -1,18 +1,15 @@
 package ru.amorozov.domain.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.NonNull;
-import ru.amorozov.domain.entities.enums.Role;
 
 /**
  * @author Aleksey Morozov
  * @since 24.08.2022
  */
-public record User(@GeneratedValue(strategy = GenerationType.IDENTITY) Long id,
+public record User(long id,
                    @NonNull String name,
                    @NonNull String email,
                    @NonNull String password,
                    @NonNull String avatar,
-                   @NonNull Role role) implements BasicEntity {
+                   @NonNull UserRole role) implements BasicEntity {
 }

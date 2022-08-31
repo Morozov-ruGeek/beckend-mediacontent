@@ -1,8 +1,6 @@
 package ru.amorozov.domain.entities;
 
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import lombok.NonNull;
 import ru.amorozov.domain.entities.enums.Format;
 
 import java.time.LocalDateTime;
@@ -11,10 +9,10 @@ import java.time.LocalDateTime;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public record File(@GeneratedValue(strategy = GenerationType.IDENTITY) int id,
-                   String name,
-                   LocalDateTime dateCreated,
-                   Format format,
-                   String url) implements BasicEntity {
+public record File(long id,
+                   @NonNull String name,
+                   @NonNull LocalDateTime dateCreated,
+                   @NonNull Format format,
+                   @NonNull String url) implements BasicEntity {
 
 }

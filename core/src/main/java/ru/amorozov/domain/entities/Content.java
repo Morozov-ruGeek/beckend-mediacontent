@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public record Content(@GeneratedValue(strategy = GenerationType.IDENTITY) int id,
+public record Content(Long id,
                       @NonNull ContentType contentType,
                       @NonNull String name,
                       @NonNull LocalDateTime dateCreated,

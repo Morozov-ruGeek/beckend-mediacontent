@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author Aleksey Morozov
  * @since 24.08.2022
  */
-public interface UserRepository {
+public interface UserRepositoryService {
     User create(User user);
 
     User update(User user);

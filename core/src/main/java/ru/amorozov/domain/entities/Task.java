@@ -1,7 +1,5 @@
 package ru.amorozov.domain.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.NonNull;
 
 import java.time.LocalDateTime;
@@ -12,7 +10,7 @@ import java.util.List;
  * @since 25.08.2022
  */
 
-public record Task(@GeneratedValue(strategy = GenerationType.IDENTITY) int id,
+public record Task(long id,
                    @NonNull String name,
                    @NonNull ContentType type,
                    @NonNull String description,

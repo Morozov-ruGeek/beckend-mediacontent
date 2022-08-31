@@ -5,7 +5,7 @@ import lombok.NonNull;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
 import ru.amorozov.domain.entities.User;
-import ru.amorozov.domain.repositories.UserRepository;
+import ru.amorozov.domain.repositories.UserRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -14,18 +14,18 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class CreateUserUseCase implements UseCase<User, User> {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryService userRepositoryService;
 
-    public CreateUserUseCase(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public CreateUserUseCase(UserRepositoryService userRepositoryService) {
+        this.userRepositoryService = userRepositoryService;
     }
 
     @Override
     public @NonNull Either<Failure, User> execute(@NonNull User user) {
-        final var result = userRepository.getByEmail(user.email());
+        final var result = userRepositoryService.getByEmail(user.email());
         if (result.isEmpty()) {
             return Either.left(new CoreFailures.EmailAlreadyExist());
         }
-        return Either.right(userRepository.create(user));
+        return Either.right(userRepositoryService.create(user));
     }
 }

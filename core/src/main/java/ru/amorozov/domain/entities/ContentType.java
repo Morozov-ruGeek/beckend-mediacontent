@@ -1,6 +1,6 @@
 package ru.amorozov.domain.entities;
 
-
+import lombok.NonNull;
 import ru.amorozov.domain.entities.enums.Type;
 
 /**
@@ -8,6 +8,6 @@ import ru.amorozov.domain.entities.enums.Type;
  * @since 25.08.2022
  */
 public record ContentType(int id,
-                          Type name) implements BasicEntity {
+                          @NonNull Type name) implements BasicEntity {
 
 }

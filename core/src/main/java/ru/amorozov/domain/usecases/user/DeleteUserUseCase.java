@@ -4,7 +4,7 @@ import io.vavr.control.Either;
 import lombok.NonNull;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.UserRepository;
+import ru.amorozov.domain.repositories.UserRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -13,18 +13,18 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class DeleteUserUseCase implements UseCase<String, Void> {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryService userRepositoryService;
 
-    public DeleteUserUseCase(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DeleteUserUseCase(UserRepositoryService userRepositoryService) {
+        this.userRepositoryService = userRepositoryService;
     }
 
     @Override
     public Either<Failure, Void> execute(@NonNull String email) {
-        if(userRepository.getByEmail(email).isEmpty()){
+        if(userRepositoryService.getByEmail(email).isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }
-        userRepository.delete(email);
+        userRepositoryService.delete(email);
         return Either.right(null);
     }
 }

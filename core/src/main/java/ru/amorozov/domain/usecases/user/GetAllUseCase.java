@@ -1,10 +1,9 @@
 package ru.amorozov.domain.usecases.user;
 
 import io.vavr.control.Either;
-import lombok.NonNull;
 import ru.amorozov.domain.entities.User;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.UserRepository;
+import ru.amorozov.domain.repositories.UserRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 import java.util.Collection;
@@ -15,14 +14,14 @@ import java.util.Collection;
  */
 public class GetAllUseCase implements UseCase<Void, Collection<User>> {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryService userRepositoryService;
 
-    public GetAllUseCase(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public GetAllUseCase(UserRepositoryService userRepositoryService) {
+        this.userRepositoryService = userRepositoryService;
     }
 
     @Override
     public Either<Failure, Collection<User>> execute(Void ignore) {
-        return Either.right(userRepository.getAll());
+        return Either.right(userRepositoryService.getAll());
     }
 }

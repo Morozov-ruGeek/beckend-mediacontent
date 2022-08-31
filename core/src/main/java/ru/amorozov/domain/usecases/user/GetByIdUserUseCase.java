@@ -4,7 +4,7 @@ import io.vavr.control.Either;
 import ru.amorozov.domain.entities.User;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.UserRepository;
+import ru.amorozov.domain.repositories.UserRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -13,15 +13,15 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class GetByIdUserUseCase implements UseCase<Long, User> {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryService userRepositoryService;
 
-    public GetByIdUserUseCase(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public GetByIdUserUseCase(UserRepositoryService userRepositoryService) {
+        this.userRepositoryService = userRepositoryService;
     }
 
     @Override
     public Either<Failure, User> execute(Long userId) {
-        final var result = userRepository.getById(userId);
+        final var result = userRepositoryService.getById(userId);
         if (result.isEmpty()) {
             return Either.left(new CoreFailures.NotFound());
         }
