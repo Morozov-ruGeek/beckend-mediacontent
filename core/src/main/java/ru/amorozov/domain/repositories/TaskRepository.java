@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface TaskRepository {
     Collection<Task> getAll();
     Task create(Task task);
-    Optional<Task> getById(int id);
+    Optional<Task> getById(long id);
     Task update(Task task);
     void delete(int id);
 }

@@ -8,6 +8,7 @@ import ru.amorozov.mediacontent.persistence.converters.UserModelConverter;
 import ru.amorozov.mediacontent.persistence.repositories.UserRepository;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -45,12 +46,9 @@ public class UserService implements UserRepositoryService {
     }
 
     @Override
-    public User getByEmail(String email) {
+    public Optional<User> getByEmail(String email) {
         var user = userRepository.findByEmail(email);
-        if(user.isEmpty()){
-            return null;
-        }
-        return converter.toEntity(user.get());
+        return Optional.of(converter.toEntity(user.get()));
     }
 
     @Override
@@ -59,11 +57,8 @@ public class UserService implements UserRepositoryService {
     }
 
     @Override
-    public User getById(Long id) {
+    public Optional<User> getById(Long id) {
         var user = userRepository.findById(id);
-        if (user.isEmpty()){
-            return null;
-        }
-        return converter.toEntity(user.get());
+        return Optional.ofNullable(converter.toEntity(user.get()));
     }
 }
