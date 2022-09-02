@@ -2,7 +2,8 @@ package ru.amorozov.mediacontent.delivery.converters.user;
 
 import org.springframework.stereotype.Component;
 import ru.amorozov.domain.entities.User;
-import ru.amorozov.mediacontent.persistence.converters.AbstractConverter;
+import ru.amorozov.domain.entities.UserRole;
+import ru.amorozov.mediacontent.delivery.converters.RestConverter;
 import ru.amorozov.mediacontent.delivery.dto.user.UserRequestDto;
 
 
@@ -11,14 +12,18 @@ import ru.amorozov.mediacontent.delivery.dto.user.UserRequestDto;
  * @since 26.08.2022
  */
 @Component
-public class UserRequestConverter extends AbstractConverter<UserRequestDto, User> {
+public class UserRequestConverter implements RestConverter<UserRequestDto, User> {
     @Override
     public UserRequestDto toDto(User entity) {
-        throw new UnsupportedOperationException();
+        return UserRequestDto.create(entity);
     }
 
     @Override
     public User toEntity(UserRequestDto dto) {
-        throw new UnsupportedOperationException();
+        return new User(dto.getName(),
+                dto.getEmail(),
+                dto.getPassword(),
+                dto.getAvatar(),
+                new UserRole(dto.getRole()));
     }
 }

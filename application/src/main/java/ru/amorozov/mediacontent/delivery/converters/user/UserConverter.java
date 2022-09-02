@@ -1,10 +1,11 @@
 package ru.amorozov.mediacontent.delivery.converters.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.amorozov.domain.entities.User;
-import ru.amorozov.mediacontent.persistence.converters.AbstractConverter;
-import ru.amorozov.mediacontent.delivery.dto.user.UserDto;
+import ru.amorozov.domain.entities.UserRole;
+import ru.amorozov.domain.entities.enums.Role;
+import ru.amorozov.mediacontent.delivery.converters.RestConverter;
+import ru.amorozov.mediacontent.delivery.dto.user.UserResponseDto;
 
 
 /**
@@ -12,22 +13,19 @@ import ru.amorozov.mediacontent.delivery.dto.user.UserDto;
  * @since 26.08.2022
  */
 @Component
-public class UserConverter extends AbstractConverter<UserDto, User> {
+public final class UserConverter implements RestConverter<UserResponseDto, User> {
 
-    private final RoleConverter roleConverter;
-
-    @Autowired
-    public UserConverter(RoleConverter roleConverter) {
-        this.roleConverter = roleConverter;
+    @Override
+    public UserResponseDto toDto(User entity) {
+        return UserResponseDto.create(entity);
     }
 
     @Override
-    public UserDto toDto(User entity) {
-        return null;
-    }
-
-    @Override
-    public User toEntity(UserDto dto) {
-        return null;
+    public User toEntity(UserResponseDto dto) {
+        return new User(dto.getId(),
+                dto.getName(),
+                dto.getEmail(),
+                dto.getAvatar(),
+                new UserRole(dto.getRole().getId(), Role.valueOf(dto.getRole().getRoleName())));
     }
 }

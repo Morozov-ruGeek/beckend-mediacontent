@@ -1,8 +1,7 @@
 package ru.amorozov.mediacontent.delivery.dto.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import ru.amorozov.domain.entities.User;
 import ru.amorozov.domain.entities.enums.Role;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
 
@@ -10,14 +9,24 @@ import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserRequestDto implements DataTransferObject {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+public final class UserRequestDto implements DataTransferObject {
 
-    private @Getter String name;
-    private @Getter String email;
-    private @Getter String password;
-    private @Getter String avatar;
-    private @Getter Role role;
+    private String name;
+    private String email;
+    private String password;
+    private String avatar;
+    private Role role;
+
+    public static UserRequestDto create(User user) {
+        var userRequestDto = new UserRequestDto();
+        userRequestDto.name = user.name();
+        userRequestDto.email = user.email();
+        userRequestDto.password = user.password();
+        userRequestDto.avatar = user.avatar();
+        userRequestDto.role = user.role().role();
+        return userRequestDto;
+    }
 
 }

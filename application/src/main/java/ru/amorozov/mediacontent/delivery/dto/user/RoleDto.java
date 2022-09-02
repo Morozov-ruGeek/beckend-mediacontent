@@ -1,23 +1,25 @@
 package ru.amorozov.mediacontent.delivery.dto.user;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import ru.amorozov.domain.entities.UserRole;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
 
 /**
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-public class RoleDto implements DataTransferObject {
-    private @Getter int id;
-    private @Getter String roleName;
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+public final class RoleDto implements DataTransferObject {
+    private long id;
+    private String roleName;
 
-    private RoleDto() {
-    }
-    public static RoleDto create(int id,
-                                 String roleName) {
+    public static RoleDto create(UserRole role) {
         var userRoleRto = new RoleDto();
-        userRoleRto.id = id;
-        userRoleRto.roleName = roleName;
+        userRoleRto.id = role.id();
+        userRoleRto.roleName = role.role().name();
         return userRoleRto;
     }
 }
