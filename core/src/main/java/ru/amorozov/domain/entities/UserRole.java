@@ -9,4 +9,7 @@ import ru.amorozov.domain.entities.enums.Role;
  */
 public record UserRole(Long id,
                        @NonNull Role role) implements BasicEntity {
+    public UserRole(@NonNull Role role) {
+        this(null, role);
+    }
 }
