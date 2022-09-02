@@ -16,10 +16,10 @@ public interface UserRepositoryService {
 
     void delete(String email);
 
-    Optional<User> getByEmail(String email);
+    User getByEmail(String email);
 
     Collection<User> getAll();
 
-    Optional<User> getById(Long id);
+    User getById(Long id);
 
 }

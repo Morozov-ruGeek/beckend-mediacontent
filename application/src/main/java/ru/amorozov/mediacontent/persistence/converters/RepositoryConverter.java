@@ -12,5 +12,5 @@ public interface RepositoryConverter<ModelT extends JpaModel, EntityT extends Ba
 
     ModelT toModel(EntityT entity);
 
-    EntityT toEntity(ModelT dto);
+    EntityT toEntity(ModelT model);
 }
