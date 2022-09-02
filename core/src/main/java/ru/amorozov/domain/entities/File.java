@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public record File(long id,
+public record File(Long id,
                    @NonNull String name,
                    @NonNull LocalDateTime dateCreated,
                    @NonNull Format format,

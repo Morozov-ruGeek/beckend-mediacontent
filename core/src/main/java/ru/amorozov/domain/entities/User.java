@@ -6,7 +6,7 @@ import lombok.NonNull;
  * @author Aleksey Morozov
  * @since 24.08.2022
  */
-public record User(long id,
+public record User(Long id,
                    @NonNull String name,
                    @NonNull String email,
                    @NonNull String password,
