@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @Table(name = "contents")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class ContentModel implements JpaModel {
 
     @Id
@@ -64,13 +63,13 @@ public final class ContentModel implements JpaModel {
 
     public static ContentModel create(Content entity){
         var contentModel = new ContentModel();
-        contentModel.setContentType(ContentTypeModel.create(entity.contentType()));
-        contentModel.setName(entity.name());
-        contentModel.setDateCreated(entity.dateCreated());
-        contentModel.setAuthor(UserModel.create(entity.author()));
-        contentModel.setFormat(entity.format());
-        contentModel.setUrl(entity.url());
-        contentModel.setPreview(entity.preview());
+        contentModel.contentType = ContentTypeModel.create(entity.contentType());
+        contentModel.name = entity.name();
+        contentModel.dateCreated = entity.dateCreated();
+        contentModel.author = UserModel.create(entity.author());
+        contentModel.format = entity.format();
+        contentModel.url = entity.url();
+        contentModel.preview = entity.preview();
         return contentModel;
     }
 }

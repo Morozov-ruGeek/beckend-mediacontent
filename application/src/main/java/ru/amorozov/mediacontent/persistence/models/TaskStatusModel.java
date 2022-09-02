@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Table(name = "statuses")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class TaskStatusModel implements JpaModel{
 
     @Id
@@ -30,7 +29,7 @@ public final class TaskStatusModel implements JpaModel{
 
     public static TaskStatusModel create(TaskStatus entity){
         var taskStatusModel = new TaskStatusModel();
-        taskStatusModel.setStatus(entity.status());
+        taskStatusModel.status = entity.status();
         return taskStatusModel;
     }
 }

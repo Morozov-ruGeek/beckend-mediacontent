@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @Table(name = "files")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class FileModel implements JpaModel {
 
     @Id
@@ -52,10 +51,10 @@ public final class FileModel implements JpaModel {
 
     public static FileModel create(File entity) {
         var fileModel = new FileModel();
-        fileModel.setName(entity.name());
-        fileModel.setDateCreated(entity.dateCreated());
-        fileModel.setFormat(entity.format());
-        fileModel.setUrl(entity.url());
+        fileModel.name = entity.name();
+        fileModel.dateCreated = entity.dateCreated();
+        fileModel.format = entity.format();
+        fileModel.url = entity.url();
         return fileModel;
     }
 }

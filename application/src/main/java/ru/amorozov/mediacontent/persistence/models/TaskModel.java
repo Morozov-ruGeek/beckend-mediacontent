@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @Table(name = "tasks")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class TaskModel implements JpaModel {
 
     @Id
@@ -74,16 +73,16 @@ public final class TaskModel implements JpaModel {
 
     public static TaskModel create(Task entity){
         var taskModel = new TaskModel();
-        taskModel.setName(entity.name());
-        taskModel.setType(ContentTypeModel.create(entity.type()));
-        taskModel.setDescription(entity.description());
-        taskModel.setFiles(entity.files().stream().map(FileModel::create).collect(Collectors.toList()));
-        taskModel.setAuthor(UserModel.create(entity.author()));
-        taskModel.setExecutor(UserModel.create(entity.executor()));
-        taskModel.setDateExpired(entity.dateExpired());
-        taskModel.setContents(entity.contents().stream().map(ContentModel::create).collect(Collectors.toList()));
-        taskModel.setComments(entity.comments().stream().map(CommentModel::create).collect(Collectors.toList()));
-        taskModel.setStatus(TaskStatusModel.create(entity.status()));
+        taskModel.name = entity.name();
+        taskModel.type = ContentTypeModel.create(entity.type());
+        taskModel.description = entity.description();
+        taskModel.files = entity.files().stream().map(FileModel::create).collect(Collectors.toList());
+        taskModel.author = UserModel.create(entity.author());
+        taskModel.executor = UserModel.create(entity.executor());
+        taskModel.dateExpired = entity.dateExpired();
+        taskModel.contents = entity.contents().stream().map(ContentModel::create).collect(Collectors.toList());
+        taskModel.comments = entity.comments().stream().map(CommentModel::create).collect(Collectors.toList());
+        taskModel.status = TaskStatusModel.create(entity.status());
         return taskModel;
     }
 }

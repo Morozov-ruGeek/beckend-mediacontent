@@ -17,7 +17,6 @@ import javax.persistence.*;
 @Table(name = "content_types")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class ContentTypeModel implements JpaModel {
 
     @Id
@@ -31,7 +30,7 @@ public final class ContentTypeModel implements JpaModel {
 
     public static ContentTypeModel create(ContentType entity){
         var contentTypeModel = new ContentTypeModel();
-        contentTypeModel.setType(entity.name());
+        contentTypeModel.type = entity.name();
         return contentTypeModel;
     }
 }

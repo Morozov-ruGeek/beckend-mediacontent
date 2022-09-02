@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class UserModel implements JpaModel {
 
     @Id
@@ -50,11 +49,11 @@ public final class UserModel implements JpaModel {
 
     public static UserModel create(User entity){
         var user = new UserModel();
-        user.setName(entity.name());
-        user.setEmail(entity.email());
-        user.setPassword(entity.password());
-        user.setAvatar(entity.avatar());
-        user.setRole(UserRoleModel.create(entity.role()));
+        user.name = entity.name();
+        user.email = entity.email();
+        user.password = entity.password();
+        user.avatar = entity.avatar();
+        user.role = UserRoleModel.create(entity.role());
         return user;
     }
 }

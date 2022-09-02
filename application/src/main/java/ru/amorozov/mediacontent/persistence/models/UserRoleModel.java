@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Table(name = "roles")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class UserRoleModel implements JpaModel {
 
     @Id
@@ -32,7 +31,7 @@ public final class UserRoleModel implements JpaModel {
 
     public static UserRoleModel create(UserRole role){
         var userRole = new UserRoleModel();
-        userRole.setRole(role.role());
+        userRole.role = role.role();
         return userRole;
     }
 }

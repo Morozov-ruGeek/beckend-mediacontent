@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Table(name = "comments")
 @NoArgsConstructor
 @Getter
-@Setter
 public final class CommentModel implements JpaModel{
 
     @Id
@@ -39,9 +38,9 @@ public final class CommentModel implements JpaModel{
 
     public static CommentModel create(Comment entity){
         var commentModel = new CommentModel();
-        commentModel.setUser(UserModel.create(entity.user()));
-        commentModel.setDate(entity.date());
-        commentModel.setMessage(entity.message());
+        commentModel.user = UserModel.create(entity.user());
+        commentModel.date = entity.date();
+        commentModel.message = entity.message();
         return commentModel;
     }
 }
