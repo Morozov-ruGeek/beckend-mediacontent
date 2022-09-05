@@ -1,12 +1,10 @@
 package ru.amorozov.mediacontent.delivery.converters.user;
 
-
 import org.springframework.stereotype.Component;
 import ru.amorozov.domain.entities.UserRole;
 import ru.amorozov.domain.entities.enums.Role;
 import ru.amorozov.mediacontent.delivery.converters.RestConverter;
 import ru.amorozov.mediacontent.delivery.dto.user.RoleDto;
-
 
 /**
  * @author Aleksey Morozov

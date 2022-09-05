@@ -12,11 +12,11 @@ import java.util.Collection;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public class GetAllUseCase implements UseCase<Void, Collection<User>> {
+public class GetAllUsersUseCase implements UseCase<Void, Collection<User>> {
 
     private final UserRepositoryService userRepositoryService;
 
-    public GetAllUseCase(UserRepositoryService userRepositoryService) {
+    public GetAllUsersUseCase(UserRepositoryService userRepositoryService) {
         this.userRepositoryService = userRepositoryService;
     }
 

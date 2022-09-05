@@ -8,10 +8,10 @@ import lombok.NonNull;
  */
 public record User(Long id,
                    @NonNull String name,
-                   @NonNull String email,
+                   String email,
                    String password,
-                   @NonNull String avatar,
-                   @NonNull UserRole role) implements BasicEntity {
+                   String avatar,
+                   UserRole role) implements BasicEntity {
     public User(Long id,
                 @NonNull String name,
                 @NonNull String email,
@@ -26,5 +26,9 @@ public record User(Long id,
                 @NonNull String avatar,
                 @NonNull UserRole role) {
         this(null, name, email, password, avatar, role);
+    }
+
+    public User(Long id, @NonNull String name) {
+        this(id, name, null, null, null, null);
     }
 }

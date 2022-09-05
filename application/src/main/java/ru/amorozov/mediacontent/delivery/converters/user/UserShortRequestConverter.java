@@ -1,22 +1,23 @@
 package ru.amorozov.mediacontent.delivery.converters.user;
 
-
+import org.springframework.stereotype.Component;
 import ru.amorozov.domain.entities.User;
-import ru.amorozov.mediacontent.persistence.converters.AbstractConverter;
+import ru.amorozov.mediacontent.delivery.converters.RestConverter;
 import ru.amorozov.mediacontent.delivery.dto.user.UserShortRequestDto;
 
 /**
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-public class UserShortRequestConverter extends AbstractConverter<UserShortRequestDto, User> {
+@Component
+public final class UserShortRequestConverter implements RestConverter<UserShortRequestDto, User> {
     @Override
     public UserShortRequestDto toDto(User entity) {
-        return null;
+        return UserShortRequestDto.create(entity);
     }
 
     @Override
     public User toEntity(UserShortRequestDto dto) {
-        return null;
+        return new User(dto.getId(), dto.getName());
     }
 }

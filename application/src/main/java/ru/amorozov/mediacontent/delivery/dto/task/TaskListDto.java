@@ -3,7 +3,7 @@ package ru.amorozov.mediacontent.delivery.dto.task;
 import lombok.*;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
 import ru.amorozov.mediacontent.delivery.dto.content.ContentTypeDto;
-import ru.amorozov.mediacontent.delivery.dto.user.UserDto;
+import ru.amorozov.mediacontent.delivery.dto.user.UserResponseDto;
 
 
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ public class TaskListDto implements DataTransferObject {
     private @Getter int id;
     private @Getter String name;
     private @Getter ContentTypeDto type;
-    private @Getter UserDto executor;
+    private @Getter UserResponseDto executor;
     private @Getter LocalDateTime dateExpired;
     private @Getter TaskStatusDto status;
 

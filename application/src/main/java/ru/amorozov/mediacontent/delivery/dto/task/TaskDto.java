@@ -6,7 +6,7 @@ import ru.amorozov.mediacontent.delivery.dto.comment.CommentDto;
 import ru.amorozov.mediacontent.delivery.dto.content.ContentDto;
 import ru.amorozov.mediacontent.delivery.dto.file.FileDto;
 import ru.amorozov.mediacontent.delivery.dto.content.ContentTypeDto;
-import ru.amorozov.mediacontent.delivery.dto.user.UserDto;
+import ru.amorozov.mediacontent.delivery.dto.user.UserResponseDto;
 
 
 import java.time.LocalDateTime;
@@ -25,8 +25,8 @@ public class TaskDto implements DataTransferObject {
     private @Getter ContentTypeDto type;
     private @Getter String description;
     private @Getter List<FileDto> files;
-    private @Getter UserDto author;
-    private @Getter UserDto executor;
+    private @Getter UserResponseDto author;
+    private @Getter UserResponseDto executor;
     private @Getter LocalDateTime dateCreated;
     private @Getter LocalDateTime dateExpired;
     private @Getter List<ContentDto> contents;
