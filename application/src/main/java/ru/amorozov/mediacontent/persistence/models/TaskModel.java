@@ -31,7 +31,6 @@ public final class TaskModel implements JpaModel {
 
     @ManyToOne
     @JoinColumn(name = "content_type_id")
-    @Column(nullable = false)
     private ContentTypeModel type;
 
     @Column(nullable = false)
@@ -42,13 +41,11 @@ public final class TaskModel implements JpaModel {
     private Collection<FileModel> files;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    @Column(nullable = false)
+    @JoinColumn(name = "author_id")
     private UserModel author;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    @Column(nullable = false)
+    @JoinColumn(name = "executor_id")
     private UserModel executor;
 
     @CreationTimestamp
@@ -68,7 +65,6 @@ public final class TaskModel implements JpaModel {
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    @Column(nullable = false)
     private TaskStatusModel status;
 
     public static TaskModel create(Task entity){

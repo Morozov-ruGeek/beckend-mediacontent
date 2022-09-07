@@ -39,7 +39,6 @@ public final class ContentModel implements JpaModel {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @Column(nullable = false)
     private UserModel author;
 
     @Enumerated(EnumType.STRING)
@@ -54,7 +53,6 @@ public final class ContentModel implements JpaModel {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @Column
     private TaskModel task;
 
     @UpdateTimestamp

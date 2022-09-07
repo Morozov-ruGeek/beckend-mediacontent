@@ -61,7 +61,7 @@ public class UserController {
         return userConverter.toDto(result.get());
     }
 
-    @PostMapping()
+    @PostMapping("/user")
     public UserResponseDto getByEmail(@Valid @RequestBody String email) {
         var result = getByEmailUseCase.execute(email);
         if (result.isLeft() && result.getLeft() instanceof CoreFailures.NotFound) {

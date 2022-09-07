@@ -26,7 +26,7 @@ public final class UserModel implements JpaModel {
     @Column(name = "user_name", nullable = false)
     String name;
 
-    @Column(name = "e-mail", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     String email;
 
     @Column(name = "password", nullable = false)
@@ -49,6 +49,17 @@ public final class UserModel implements JpaModel {
 
     public static UserModel create(User entity){
         var user = new UserModel();
+        user.name = entity.name();
+        user.email = entity.email();
+        user.password = entity.password();
+        user.avatar = entity.avatar();
+        user.role = UserRoleModel.create(entity.role());
+        return user;
+    }
+
+    public static UserModel createWithId(User entity){
+        var user = new UserModel();
+        user.id = entity.id();
         user.name = entity.name();
         user.email = entity.email();
         user.password = entity.password();

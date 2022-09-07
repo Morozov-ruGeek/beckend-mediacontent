@@ -32,8 +32,7 @@ public final class CommentModel implements JpaModel{
     private String message;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
-    @Column(nullable = false)
+    @JoinColumn(name = "tasks_id")
     private TaskModel task;
 
     public static CommentModel create(Comment entity){

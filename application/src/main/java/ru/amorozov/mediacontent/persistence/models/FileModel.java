@@ -42,7 +42,6 @@ public final class FileModel implements JpaModel {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @Column
     private TaskModel task;
 
     @UpdateTimestamp

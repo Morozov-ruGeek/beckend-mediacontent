@@ -29,8 +29,6 @@ public class UserModelConverter implements RepositoryConverter<UserModel, User> 
     }
 
     public UserModel toModelWIthId(User user) {
-        var userModel = UserModel.create(user);
-        userModel.setId(user.id());
-        return userModel;
+        return UserModel.createWithId(user);
     }
 }

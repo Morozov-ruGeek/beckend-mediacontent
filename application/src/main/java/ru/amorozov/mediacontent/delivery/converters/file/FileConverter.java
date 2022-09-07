@@ -2,14 +2,15 @@ package ru.amorozov.mediacontent.delivery.converters.file;
 
 
 import ru.amorozov.domain.entities.File;
-import ru.amorozov.mediacontent.persistence.converters.AbstractConverter;
+
+import ru.amorozov.mediacontent.delivery.converters.RestConverter;
 import ru.amorozov.mediacontent.delivery.dto.file.FileDto;
 
 /**
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-public class FileConverter extends AbstractConverter<FileDto, File> {
+public class FileConverter implements RestConverter<FileDto, File> {
     @Override
     public FileDto toDto(File entity) {
         return null;
