@@ -12,7 +12,6 @@ import ru.amorozov.mediacontent.delivery.exceptions.NotFoundException;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import static ru.amorozov.mediacontent.delivery.DeliveryConstants.*;
 
@@ -49,7 +48,7 @@ public class UserController {
     @GetMapping
     public Collection<UserResponseDto> getAll() {
         var result = getAllUsersUseCase.execute(null);
-        return result.get().stream().map(userConverter::toDto).collect(Collectors.toList());
+        return result.get().stream().map(userConverter::toDto).toList();
     }
 
     @GetMapping("/{id}")
