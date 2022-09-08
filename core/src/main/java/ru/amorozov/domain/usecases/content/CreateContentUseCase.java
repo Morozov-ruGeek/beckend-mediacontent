@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.content;
 import io.vavr.control.Either;
 import ru.amorozov.domain.entities.Content;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.ContentRepository;
+import ru.amorozov.domain.repositories.ContentRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -12,14 +12,14 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class CreateContentUseCase implements UseCase<Content, Content> {
 
-    private final ContentRepository contentRepository;
+    private final ContentRepositoryService contentRepositoryService;
 
-    public CreateContentUseCase(ContentRepository contentRepository) {
-        this.contentRepository = contentRepository;
+    public CreateContentUseCase(ContentRepositoryService contentRepositoryService) {
+        this.contentRepositoryService = contentRepositoryService;
     }
 
     @Override
     public Either<Failure, Content> execute(Content content) {
-        return Either.right(contentRepository.save(content));
+        return Either.right(contentRepositoryService.save(content));
     }
 }

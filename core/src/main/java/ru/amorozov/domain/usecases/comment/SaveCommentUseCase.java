@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.comment;
 import io.vavr.control.Either;
 import ru.amorozov.domain.entities.Comment;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.CommentRepository;
+import ru.amorozov.domain.repositories.CommentRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -12,14 +12,14 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class SaveCommentUseCase implements UseCase<Comment, Comment> {
 
-    private final CommentRepository commentRepository;
+    private final CommentRepositoryService commentRepositoryService;
 
-    public SaveCommentUseCase(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
+    public SaveCommentUseCase(CommentRepositoryService commentRepositoryService) {
+        this.commentRepositoryService = commentRepositoryService;
     }
 
     @Override
     public Either<Failure, Comment> execute(Comment comment) {
-        return Either.right(commentRepository.save(comment));
+        return Either.right(commentRepositoryService.save(comment));
     }
 }

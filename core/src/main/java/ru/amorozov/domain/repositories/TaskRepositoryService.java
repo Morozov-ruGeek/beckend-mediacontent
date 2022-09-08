@@ -9,10 +9,10 @@ import java.util.Optional;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public interface TaskRepository {
+public interface TaskRepositoryService {
     Collection<Task> getAll();
     Task create(Task task);
     Optional<Task> getById(long id);
     Task update(Task task);
-    void delete(int id);
+    void delete(long id);
 }

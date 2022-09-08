@@ -9,13 +9,13 @@ import java.util.Optional;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public interface ContentRepository {
+public interface ContentRepositoryService {
 
-    Optional<Content> findById(int contentId);
+    Optional<Content> findById(long id);
 
     Collection<Content> getAll();
 
     Content save(Content content);
 
-    void delete(int id);
+    void delete(long id);
 }

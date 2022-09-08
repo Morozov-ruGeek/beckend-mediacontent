@@ -53,7 +53,7 @@ public class UserService implements UserRepositoryService {
 
     @Override
     public Collection<User> getAll() {
-        return userRepository.findAll().stream().map(converter::toEntity).collect(Collectors.toList());
+        return userRepository.findAll().stream().map(converter::toEntity).toList();
     }
 
     @Override

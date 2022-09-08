@@ -6,6 +6,6 @@ import ru.amorozov.domain.entities.Comment;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public interface CommentRepository {
+public interface CommentRepositoryService {
     Comment save(Comment comment);
 }

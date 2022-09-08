@@ -8,10 +8,10 @@ import java.util.Optional;
  * @author Aleksey Morozov
  * @since 25.08.2022
  */
-public interface FileRepository {
+public interface FileRepositoryService {
     File save(File file);
 
-    void delete(int id);
+    void delete(long id);
 
-    Optional<File> findById(int id);
+    Optional<File> findById(long id);
 }

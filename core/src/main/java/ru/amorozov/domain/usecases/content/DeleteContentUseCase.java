@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.content;
 import io.vavr.control.Either;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.ContentRepository;
+import ru.amorozov.domain.repositories.ContentRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -12,19 +12,19 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class DeleteContentUseCase implements UseCase<Integer, Void> {
 
-    private final ContentRepository contentRepository;
+    private final ContentRepositoryService contentRepositoryService;
 
-    public DeleteContentUseCase(ContentRepository contentRepository) {
-        this.contentRepository = contentRepository;
+    public DeleteContentUseCase(ContentRepositoryService contentRepositoryService) {
+        this.contentRepositoryService = contentRepositoryService;
     }
 
     @Override
     public Either<Failure, Void> execute(Integer contentId) {
-        final var result = contentRepository.findById(contentId);
+        final var result = contentRepositoryService.findById(contentId);
         if(result.isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }
-        contentRepository.delete(contentId);
+        contentRepositoryService.delete(contentId);
         return Either.right(null);
     }
 }

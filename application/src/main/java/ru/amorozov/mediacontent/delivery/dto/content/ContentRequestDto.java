@@ -10,9 +10,9 @@ import java.util.List;
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-@NoArgsConstructor
-@AllArgsConstructor
-public class ContentRequestDto  implements DataTransferObject {
-    private @Getter List<ContentDto> contents;
-    private @Getter int total;
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+public final class ContentRequestDto  implements DataTransferObject {
+    private List<ContentDto> contents;
+    private int total;
 }

@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.task;
 import io.vavr.control.Either;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.TaskRepository;
+import ru.amorozov.domain.repositories.TaskRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -12,9 +12,9 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class DeleteTaskUseCase implements UseCase<Integer, Void> {
 
-    private final TaskRepository taskRepository;
+    private final TaskRepositoryService taskRepository;
 
-    public DeleteTaskUseCase(TaskRepository taskRepository) {
+    public DeleteTaskUseCase(TaskRepositoryService taskRepository) {
         this.taskRepository = taskRepository;
     }
 

@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.file;
 import io.vavr.control.Either;
 import ru.amorozov.domain.failure.CoreFailures;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.FileRepository;
+import ru.amorozov.domain.repositories.FileRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 /**
@@ -12,19 +12,19 @@ import ru.amorozov.domain.usecases.UseCase;
  */
 public class DeleteFileUseCase implements UseCase<Integer, Void> {
 
-    private final FileRepository fileRepository;
+    private final FileRepositoryService fileRepositoryService;
 
-    public DeleteFileUseCase(FileRepository fileRepository) {
-        this.fileRepository = fileRepository;
+    public DeleteFileUseCase(FileRepositoryService fileRepositoryService) {
+        this.fileRepositoryService = fileRepositoryService;
     }
 
     @Override
     public Either<Failure, Void> execute(Integer fileId) {
-        final var result = fileRepository.findById(fileId);
+        final var result = fileRepositoryService.findById(fileId);
         if (result.isEmpty()){
             return Either.left(new CoreFailures.NotFound());
         }
-        fileRepository.delete(fileId);
+        fileRepositoryService.delete(fileId);
         return Either.right(null);
     }
 }

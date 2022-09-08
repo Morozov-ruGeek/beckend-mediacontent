@@ -3,7 +3,7 @@ package ru.amorozov.domain.usecases.content;
 import io.vavr.control.Either;
 import ru.amorozov.domain.entities.Content;
 import ru.amorozov.domain.failure.Failure;
-import ru.amorozov.domain.repositories.ContentRepository;
+import ru.amorozov.domain.repositories.ContentRepositoryService;
 import ru.amorozov.domain.usecases.UseCase;
 
 import java.util.Collection;
@@ -14,14 +14,14 @@ import java.util.Collection;
  */
 public class GetAllUseCase implements UseCase<Void, Collection<Content>> {
 
-    private final ContentRepository contentRepository;
+    private final ContentRepositoryService contentRepositoryService;
 
-    public GetAllUseCase(ContentRepository contentRepository) {
-        this.contentRepository = contentRepository;
+    public GetAllUseCase(ContentRepositoryService contentRepositoryService) {
+        this.contentRepositoryService = contentRepositoryService;
     }
 
     @Override
     public Either<Failure, Collection<Content>> execute(Void ignore) {
-        return Either.right(contentRepository.getAll());
+        return Either.right(contentRepositoryService.getAll());
     }
 }
