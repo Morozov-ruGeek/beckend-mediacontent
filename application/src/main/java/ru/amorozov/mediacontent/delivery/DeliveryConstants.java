@@ -9,4 +9,5 @@ public class DeliveryConstants {
     public static final String API_VERSION_1 = "/v1";
     public static final String RESOURCE_USER = "/users";
     public static final String RESOURCE_TASK = "/tasks";
+    public static final String RESOURCE_FILE = "/files";
 }

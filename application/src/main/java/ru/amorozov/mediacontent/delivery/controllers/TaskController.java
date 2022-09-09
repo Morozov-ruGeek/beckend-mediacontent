@@ -24,10 +24,10 @@ import static ru.amorozov.mediacontent.delivery.DeliveryConstants.*;
 @RequiredArgsConstructor
 public class TaskController {
 
-    private final TaskBasicConverter taskBasicConverter;
+    private static final String EXCEPTION_MESSAGE = "Задача с id = %d не найдена.";
+
     private final TaskConverter taskConverter;
     private final TaskRequestConverter taskRequestConverter;
-    private final TaskStatusConverter taskStatusConverter;
     private final TaskListDtoConverter taskListDtoConverter;
     private final CreateTaskUseCase createTaskUseCase;
     private final DeleteTaskUseCase deleteTaskUseCase;
@@ -52,17 +52,17 @@ public class TaskController {
     public TaskDto getById(@PathVariable Long id) {
         var result = getTaskByIdUseCase.execute(id);
         if (result.isLeft() && result.getLeft() instanceof CoreFailures.NotFound) {
-            throw new NotFoundException(String.format("Задача с id = %d не найдена.", id));
+            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, id));
         }
         return taskConverter.toDto(result.get());
     }
 
     @PostMapping("/task")
     public TaskDto update(@Valid @RequestBody TaskDto dto) {
-        var task = taskConverter.toEntity(dto);
+        var task = taskConverter.toFullEntity(dto);
         var result = updateTaskUseCase.execute(task);
         if (result.isLeft() && result.getLeft() instanceof CoreFailures.NotFound) {
-            throw new NotFoundException(String.format("Задача с id = %d не найдена.", dto.getId()));
+            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, dto.getId()));
         }
         return taskConverter.toDto(result.get());
     }
@@ -71,7 +71,7 @@ public class TaskController {
     public void deleteById(@PathVariable Long id){
         var result = deleteTaskUseCase.execute(id);
         if (result.isLeft() && result.getLeft() instanceof CoreFailures.NotFound) {
-            throw new NotFoundException(String.format("Задача с id = %d не найдена.", id));
+            throw new NotFoundException(String.format(EXCEPTION_MESSAGE, id));
         }
     }
 }

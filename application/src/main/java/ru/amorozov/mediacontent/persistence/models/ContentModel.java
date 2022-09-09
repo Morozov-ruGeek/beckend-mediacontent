@@ -2,7 +2,6 @@ package ru.amorozov.mediacontent.persistence.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import ru.amorozov.domain.entities.Content;
@@ -64,7 +63,7 @@ public final class ContentModel implements JpaModel {
         contentModel.contentType = ContentTypeModel.create(entity.contentType());
         contentModel.name = entity.name();
         contentModel.dateCreated = entity.dateCreated();
-        contentModel.author = UserModel.create(entity.author());
+        contentModel.author = UserModel.create(entity.authorId());
         contentModel.format = entity.format();
         contentModel.url = entity.url();
         contentModel.preview = entity.preview();

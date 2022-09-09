@@ -32,7 +32,8 @@ public final class ContentDto  implements DataTransferObject {
         contentDto.type = ContentTypeDto.create(content.contentType());
         contentDto.name = content.name();
         contentDto.dateCreated = content.dateCreated();
-        contentDto.author = UserShortResponseDto.create(content.author());
+        //todo пересмотреть создание ContentDto
+        contentDto.author = content.authorId();
         contentDto.format = content.format();
         contentDto.url = content.url();
         contentDto.preview = content.preview();

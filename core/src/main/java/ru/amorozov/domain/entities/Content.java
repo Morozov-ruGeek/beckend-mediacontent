@@ -1,7 +1,5 @@
 package ru.amorozov.domain.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.NonNull;
 import ru.amorozov.domain.entities.enums.Format;
 
@@ -17,7 +15,7 @@ public record Content(Long id,
                       @NonNull ContentType contentType,
                       @NonNull String name,
                       @NonNull LocalDateTime dateCreated,
-                      @NonNull User author,
+                      @NonNull Long authorId,
                       @NonNull Format format,
                       @NonNull String url,
                       @NonNull String preview) implements BasicEntity {
