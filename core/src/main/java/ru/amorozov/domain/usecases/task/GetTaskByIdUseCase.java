@@ -11,7 +11,7 @@ import ru.amorozov.domain.usecases.UseCase;
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-public class GetTaskByIdUseCase implements UseCase<Integer, Task> {
+public class GetTaskByIdUseCase implements UseCase<Long, Task> {
 
     private final TaskRepositoryService taskRepository;
 
@@ -20,7 +20,7 @@ public class GetTaskByIdUseCase implements UseCase<Integer, Task> {
     }
 
     @Override
-    public Either<Failure, Task> execute(Integer taskId) {
+    public Either<Failure, Task> execute(Long taskId) {
         final var result = taskRepository.getById(taskId);
         if(result.isEmpty()){
             return Either.left(new CoreFailures.NotFound());

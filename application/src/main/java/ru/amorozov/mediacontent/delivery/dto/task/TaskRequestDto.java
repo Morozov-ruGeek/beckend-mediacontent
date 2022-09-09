@@ -1,10 +1,9 @@
 package ru.amorozov.mediacontent.delivery.dto.task;
 
 import lombok.*;
+import ru.amorozov.domain.entities.ContentType;
 import ru.amorozov.domain.entities.Task;
-import ru.amorozov.domain.entities.enums.Type;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
-import ru.amorozov.mediacontent.delivery.dto.user.UserResponseDto;
 
 import java.time.LocalDateTime;
 
@@ -17,19 +16,19 @@ import java.time.LocalDateTime;
 public final class TaskRequestDto implements DataTransferObject {
 
     private String name;
-    private Type type;
+    private ContentType type;
     private String description;
-    private UserResponseDto author;
-    private UserResponseDto executor;
+    private Long authorId;
+    private Long executorId;
     private LocalDateTime dateExpired;
 
     public static TaskRequestDto create(Task task){
         var taskRequestDto = new TaskRequestDto();
         taskRequestDto.name = task.name();
-        taskRequestDto.type = task.type().name();
+        taskRequestDto.type = task.type();
         taskRequestDto.description = task.description();
-        taskRequestDto.author = UserResponseDto.create(task.author());
-        taskRequestDto.executor = UserResponseDto.create(task.executor());
+        taskRequestDto.authorId = task.authorId();
+        taskRequestDto.executorId = task.executorId();
         taskRequestDto.dateExpired = task.dateExpired();
         return taskRequestDto;
     }

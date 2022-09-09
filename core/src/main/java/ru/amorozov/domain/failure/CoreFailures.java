@@ -10,4 +10,8 @@ public class CoreFailures {
 
     public record EmailAlreadyExist() implements Failure {
     }
+
+    public record AlReadyExist() implements Failure{
+
+    }
 }

@@ -3,7 +3,7 @@ package ru.amorozov.mediacontent.delivery.dto.comment;
 import lombok.*;
 import ru.amorozov.domain.entities.Comment;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
-import ru.amorozov.mediacontent.delivery.dto.user.UserShortRequestDto;
+import ru.amorozov.mediacontent.delivery.dto.user.UserShortResponseDto;
 
 
 import java.time.LocalDateTime;
@@ -18,14 +18,14 @@ import java.time.LocalDateTime;
 public final class CommentDto  implements DataTransferObject {
     private long id;
     private LocalDateTime date;
-    private UserShortRequestDto user;
+    private UserShortResponseDto user;
     private String message;
 
     public static CommentDto create(Comment comment){
         var commentDto = new CommentDto();
         commentDto.id = comment.id();
         commentDto.date = comment.date();
-        commentDto.user = UserShortRequestDto.create(comment.user());
+        commentDto.user = UserShortResponseDto.create(comment.user());
         commentDto.message = comment.message();
         return commentDto;
     }

@@ -1,8 +1,6 @@
 package ru.amorozov.mediacontent.delivery.dto.user;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.amorozov.domain.entities.enums.NotificationType;
 import ru.amorozov.mediacontent.delivery.dto.task.TaskBasicDto;
@@ -19,7 +17,7 @@ public class NotificationDto {
     private NotificationType type;
     private LocalDateTime date;
     private String message;
-    private UserShortRequestDto user;
+    private UserShortResponseDto user;
     private TaskBasicDto task;
 
 }

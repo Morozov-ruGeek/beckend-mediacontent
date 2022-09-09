@@ -10,7 +10,7 @@ import ru.amorozov.domain.usecases.UseCase;
  * @author Aleksey Morozov
  * @since 26.08.2022
  */
-public class DeleteTaskUseCase implements UseCase<Integer, Void> {
+public class DeleteTaskUseCase implements UseCase<Long, Void> {
 
     private final TaskRepositoryService taskRepository;
 
@@ -19,7 +19,7 @@ public class DeleteTaskUseCase implements UseCase<Integer, Void> {
     }
 
     @Override
-    public Either<Failure, Void> execute(Integer taskId) {
+    public Either<Failure, Void> execute(Long taskId) {
         final var result = taskRepository.getById(taskId);
         if(result.isEmpty()){
             return Either.left(new CoreFailures.NotFound());

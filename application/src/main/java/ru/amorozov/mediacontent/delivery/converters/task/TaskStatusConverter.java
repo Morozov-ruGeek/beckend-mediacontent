@@ -1,9 +1,8 @@
 package ru.amorozov.mediacontent.delivery.converters.task;
 
-
 import org.springframework.stereotype.Component;
-import ru.amorozov.domain.entities.Task;
 
+import ru.amorozov.domain.entities.TaskStatus;
 import ru.amorozov.mediacontent.delivery.converters.RestConverter;
 import ru.amorozov.mediacontent.delivery.dto.task.TaskStatusDto;
 
@@ -12,14 +11,14 @@ import ru.amorozov.mediacontent.delivery.dto.task.TaskStatusDto;
  * @since 26.08.2022
  */
 @Component
-public class TaskStatusConverter implements RestConverter<TaskStatusDto, Task> {
+public class TaskStatusConverter implements RestConverter<TaskStatusDto, TaskStatus> {
     @Override
-    public TaskStatusDto toDto(Task entity) {
-        return null;
+    public TaskStatusDto toDto(TaskStatus entity) {
+        return TaskStatusDto.create(entity);
     }
 
     @Override
-    public Task toEntity(TaskStatusDto dto) {
-        return null;
+    public TaskStatus toEntity(TaskStatusDto dto) {
+        return new TaskStatus(dto.getId(), dto.getStatus());
     }
 }

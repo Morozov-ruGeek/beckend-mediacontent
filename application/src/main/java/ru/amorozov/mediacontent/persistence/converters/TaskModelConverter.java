@@ -14,9 +14,14 @@ import java.util.stream.Collectors;
 @Component
 public class TaskModelConverter implements RepositoryConverter<TaskModel, Task> {
 
+    @Deprecated(since = "костыль")
     @Override
     public TaskModel toModel(Task entity) {
-        return TaskModel.create(entity);
+        return null;
+    }
+
+    public TaskModel toModel(Task entity, User author, User executor){
+        return TaskModel.create(entity, author, executor);
     }
 
     @Override
@@ -26,20 +31,8 @@ public class TaskModelConverter implements RepositoryConverter<TaskModel, Task> 
                 new ContentType(model.getType().getId(), model.getType().getType()),
                 model.getDescription(),
                 model.getFiles().stream().map(f -> new File(f.getId(), f.getName(), f.getDateCreated(), f.getFormat(), f.getUrl())).collect(Collectors.toList()),
-                new User(model.getAuthor().getId(),
-                        model.getAuthor().getName(),
-                        model.getAuthor().getEmail(),
-                        model.getAuthor().getPassword(),
-                        model.getAuthor().getAvatar(),
-                        new UserRole(model.getAuthor().getRole().getId(),
-                                model.getAuthor().getRole().getRole())),
-                new User(model.getExecutor().getId(),
-                        model.getExecutor().getName(),
-                        model.getExecutor().getEmail(),
-                        model.getExecutor().getPassword(),
-                        model.getExecutor().getAvatar(),
-                        new UserRole(model.getExecutor().getRole().getId(),
-                                model.getExecutor().getRole().getRole())),
+                model.getAuthor().getId(),
+                model.getExecutor().getId(),
                 model.getDateCreated(),
                 model.getDateExpired(),
                 model.getContents().stream().map(c -> new Content (c.getId(),

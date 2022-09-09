@@ -1,7 +1,5 @@
 package ru.amorozov.domain.entities;
 
-import lombok.NonNull;
-
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -11,17 +9,35 @@ import java.util.Collection;
  */
 
 public record Task(Long id,
-                   @NonNull String name,
-                   @NonNull ContentType type,
-                   @NonNull String description,
-                   @NonNull Collection<File> files,
-                   @NonNull User author,
-                   @NonNull User executor,
-                   @NonNull LocalDateTime dateCreated,
-                   @NonNull LocalDateTime dateExpired,
-                   @NonNull Collection<Content> contents,
-                   @NonNull Collection<Comment> comments,
-                   @NonNull TaskStatus status) implements BasicEntity {
-
+                   String name,
+                   ContentType type,
+                   String description,
+                   Collection<File> files,
+                   Long authorId,
+                   Long executorId,
+                   LocalDateTime dateCreated,
+                   LocalDateTime dateExpired,
+                   Collection<Content> contents,
+                   Collection<Comment> comments,
+                   TaskStatus status) implements BasicEntity {
+    public Task(String name,
+                ContentType type,
+                String description,
+                Long authorId,
+                Long executorId,
+                LocalDateTime dateExpired) {
+        this(null,
+                name,
+                type,
+                description,
+                null,
+                authorId,
+                executorId,
+                null,
+                dateExpired,
+                null,
+                null,
+                null);
+    }
 }
 

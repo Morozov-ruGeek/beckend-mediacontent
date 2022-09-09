@@ -4,7 +4,7 @@ import lombok.*;
 import ru.amorozov.domain.entities.Content;
 import ru.amorozov.domain.entities.enums.Format;
 import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
-import ru.amorozov.mediacontent.delivery.dto.user.UserShortRequestDto;
+import ru.amorozov.mediacontent.delivery.dto.user.UserShortResponseDto;
 
 
 import java.time.LocalDateTime;
@@ -21,7 +21,7 @@ public final class ContentDto  implements DataTransferObject {
     private ContentTypeDto type;
     private String name;
     private LocalDateTime dateCreated;
-    private UserShortRequestDto author;
+    private UserShortResponseDto author;
     private Format format;
     private String url;
     private String preview;
@@ -32,7 +32,7 @@ public final class ContentDto  implements DataTransferObject {
         contentDto.type = ContentTypeDto.create(content.contentType());
         contentDto.name = content.name();
         contentDto.dateCreated = content.dateCreated();
-        contentDto.author = UserShortRequestDto.create(content.author());
+        contentDto.author = UserShortResponseDto.create(content.author());
         contentDto.format = content.format();
         contentDto.url = content.url();
         contentDto.preview = content.preview();

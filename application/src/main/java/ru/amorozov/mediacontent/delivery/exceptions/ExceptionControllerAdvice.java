@@ -13,4 +13,10 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
         HttpException exception = new NotFoundException(e.getMessage());
         return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<Object> handleAlReadyExistException(AlReadyExistException e) {
+        HttpException exception = new AlReadyExistException(e.getMessage());
+        return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
+    }
 }

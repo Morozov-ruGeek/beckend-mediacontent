@@ -12,12 +12,12 @@ import ru.amorozov.mediacontent.delivery.dto.DataTransferObject;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public final class UserShortRequestDto implements DataTransferObject {
+public final class UserShortResponseDto implements DataTransferObject {
     private long id;
     private String name;
 
-    public static UserShortRequestDto create(User user){
-        var request = new UserShortRequestDto();
+    public static UserShortResponseDto create(User user){
+        var request = new UserShortResponseDto();
         request.id = user.id();
         request.name = user.name();
         return request;

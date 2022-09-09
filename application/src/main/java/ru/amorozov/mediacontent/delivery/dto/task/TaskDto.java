@@ -26,8 +26,8 @@ public final class TaskDto implements DataTransferObject {
     private ContentTypeDto type;
     private String description;
     private List<FileDto> files;
-    private UserResponseDto author;
-    private UserResponseDto executor;
+    private Long authorId;
+    private Long executorId;
     private LocalDateTime dateCreated;
     private LocalDateTime dateExpired;
     private List<ContentDto> contents;
@@ -41,8 +41,8 @@ public final class TaskDto implements DataTransferObject {
         taskDto.type = ContentTypeDto.create(task.type());
         taskDto.description = task.description();
         taskDto.files = task.files().stream().map(FileDto::create).toList();
-        taskDto.author = UserResponseDto.create(task.author());
-        taskDto.executor = UserResponseDto.create(task.executor());
+        taskDto.authorId = task.authorId();
+        taskDto.executorId = task.executorId();
         taskDto.dateCreated = task.dateCreated();
         taskDto.dateExpired = task.dateExpired();
         taskDto.contents = task.contents().stream().map(ContentDto::create).toList();

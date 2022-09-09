@@ -2,14 +2,13 @@ package ru.amorozov.mediacontent.persistence.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import ru.amorozov.domain.entities.Task;
+import ru.amorozov.domain.entities.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 /**
  * @author Aleksey Morozov
@@ -67,17 +66,19 @@ public final class TaskModel implements JpaModel {
     @JoinColumn(name = "status_id")
     private TaskStatusModel status;
 
-    public static TaskModel create(Task entity){
+    public static TaskModel create(Task entity,
+                                   User author,
+                                   User executor){
         var taskModel = new TaskModel();
         taskModel.name = entity.name();
         taskModel.type = ContentTypeModel.create(entity.type());
         taskModel.description = entity.description();
-        taskModel.files = entity.files().stream().map(FileModel::create).collect(Collectors.toList());
-        taskModel.author = UserModel.create(entity.author());
-        taskModel.executor = UserModel.create(entity.executor());
+        taskModel.files = entity.files().stream().map(FileModel::create).toList();
+        taskModel.author = UserModel.create(author);
+        taskModel.executor = UserModel.create(executor);
         taskModel.dateExpired = entity.dateExpired();
-        taskModel.contents = entity.contents().stream().map(ContentModel::create).collect(Collectors.toList());
-        taskModel.comments = entity.comments().stream().map(CommentModel::create).collect(Collectors.toList());
+        taskModel.contents = entity.contents().stream().map(ContentModel::create).toList();
+        taskModel.comments = entity.comments().stream().map(CommentModel::create).toList();
         taskModel.status = TaskStatusModel.create(entity.status());
         return taskModel;
     }
